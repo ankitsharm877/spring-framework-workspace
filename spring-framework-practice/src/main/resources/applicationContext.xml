@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!-- <bean id="demoBean"
+		class="com.spring.framework.basics.beans.DemoBean" scope="singleton"> -->
+	<bean id="demoBean"
+		class="com.spring.framework.basics.beans.DemoBean" scope="prototype">
+		<!-- <property name="dependentBean" >
+        	<ref bean="dependentBean"/>
+      	</property>  -->
+      	<constructor-arg name="dependentBean" ref="dependentBean"></constructor-arg>
+	</bean>
+	<bean id="dependentBean" class="com.spring.framework.basics.beans.DependentBean" parent="parentBean">
+		<property name="message1" value="Hello World!"/>
+     	<property name="message2" value="Hello Second World!"/>
+	</bean>
+	<bean id="parentBean" class="com.spring.framework.basics.beans.ParentBean">
+		<property name="message1" value="Hello World!"/>
+     	<property name="message3" value="Hello Third World!"/>
+	</bean>
+	<bean id="outerBean" class="com.spring.framework.basics.spring.bean.property.OuterBean">
+      <property name="target">
+         <bean id="innerBean" class="com.spring.framework.basics.spring.bean.property.InnerBean"/>
+      </property>
+   </bean>
+
+</beans>
+

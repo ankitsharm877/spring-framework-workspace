@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+           default-init-method="defaultInitMethod"
+           default-destroy-method="defaultDestoryMethod">
+
+	<bean id="demoBean1"
+		class="com.spring.framework.basics.spring.lifecycle.DemoBean1">
+      	<constructor-arg name="dependentBean1" ref="dependentBean1"></constructor-arg>
+	</bean>
+	<!-- <bean id="dependentBean" class="com.spring.framework.basics.spring.lifecycle.DependentBean1" 
+		init-method="initMethod" destroy-method="destroyMethod"/> -->
+	<bean id="dependentBean1" class="com.spring.framework.basics.spring.lifecycle.DependentBean1"/>
+
+</beans>
+
